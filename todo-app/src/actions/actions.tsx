@@ -8,7 +8,7 @@ export async function add_todo(state:{status:string,message:string},formData:For
 
     try
     {
-        const response = await fetch('http://127.0.0.1:8000/todos', {
+        const response = await fetch('https://todo-fastapi-iota.vercel.app/todos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,6 +16,7 @@ export async function add_todo(state:{status:string,message:string},formData:For
             body: JSON.stringify({name: new_todo}),
         })
         const data = await response.json()
+        
         if(data.name)
         {
             revalidatePath('/todos')
@@ -37,7 +38,7 @@ export async function edit_todo(state:{status:string,message:string},{id,name,is
 
     try
     {
-        const response = await fetch(`http://127.0.0.1:8000/todos/${id}`, {
+        const response = await fetch(`https://todo-fastapi-iota.vercel.app/todos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ export async function change_status(id:number,name:string,is_complete:boolean)
 
     try
     {
-        const response = await fetch(`http://127.0.0.1:8000/todos/${id}`, {
+        const response = await fetch(`https://todo-fastapi-iota.vercel.app/todos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +84,7 @@ export async function delete_task(id:number)
 
     try
     {
-        const response = await fetch(`http://127.0.0.1:8000/todos/${id}`, {
+        const response = await fetch(`https://todo-fastapi-iota.vercel.app/todos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
